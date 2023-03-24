@@ -13,13 +13,22 @@ function TaskItem({ task, getTasks }) {
         })
     };
 
+    const toggleStatus = () => {
+        axios.put( '/todo' ).then((response) => {
+            getTasks();
+        }).catch((error) => {
+            console.log(`Error in toggleStatus() ${error}`);
+            alert(`Sorry, dawg. You won't PUT me in my place!`);
+        })
+    }
+
     return(
         <>
             <tr>
                 <td>{task.task}</td>
                 <td>{task.complete}</td>
                 <td>
-                    <input type="radio" />
+                    <input type="checkbox" value="no" onChange={toggleStatus} />
                     <button onClick={removeTask}>Clear</button>
                 </td>
             </tr>
