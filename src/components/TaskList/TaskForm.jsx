@@ -11,7 +11,7 @@ function TaskForm({ getTasks }) {
             complete: status
         }).then ((response) => {
             setNewTask('');
-            setNewStatus(false);
+            setNewStatus('no');
 
             getTasks();
         }).catch((error) => {

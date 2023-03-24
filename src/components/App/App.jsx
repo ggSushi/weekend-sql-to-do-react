@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import TaskForm from '../TaskForm/TaskForm.jsx';
+import TaskForm from '../TaskList/TaskForm.jsx';
 import TaskList from '../TaskList/TaskList.jsx';
 
 function App () {
@@ -24,7 +24,10 @@ function App () {
     <div>
       <h1>TO DO APP</h1>
       <TaskForm getTasks={getTasks}/>
-      <TaskList taskList={taskList}/>
+      <TaskList 
+        taskList={taskList}
+        getTasks={getTasks}
+      />
     </div>
   );
 

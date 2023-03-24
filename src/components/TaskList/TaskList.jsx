@@ -1,6 +1,6 @@
 import TaskItem from './TaskItem.jsx';
 
-function TaskList({ taskList }) {
+function TaskList({ taskList, getTasks }) {
 
     return(
         <>
@@ -10,6 +10,7 @@ function TaskList({ taskList }) {
                     <tr>
                         <th>Task To Do</th>
                         <th>Completed?</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,6 +18,7 @@ function TaskList({ taskList }) {
                         <TaskItem 
                             key={task.id}
                             task={task}
+                            getTasks={getTasks}
                         />
                     ))}
                 </tbody>
