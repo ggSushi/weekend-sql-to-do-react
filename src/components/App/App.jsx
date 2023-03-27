@@ -11,6 +11,7 @@ function App () {
   }, []);
 
   const getTasks = () => {
+
     axios.get('/todo').then((response) => {
       console.log(response.data);
       setTaskList(response.data);

@@ -19,6 +19,7 @@ function TaskList({ taskList, getTasks }) {
                             key={task.id}
                             task={task}
                             getTasks={getTasks}
+                            taskList={taskList}
                         />
                     ))}
                 </tbody>

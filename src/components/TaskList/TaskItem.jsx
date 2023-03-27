@@ -1,10 +1,16 @@
 import axios from 'axios';
 
 
-function TaskItem({ task, getTasks }) {
-    let taskStatus = JSON.stringify(task.complete);
+function TaskItem({ task, getTasks, taskList }) {
 
-    //TODO displayStatus function goes INTO toggleStatus
+    // let initialColor = document.querySelector('td');
+    // for ( let item of taskList) {
+    //     if (item.complete === true) {
+    //         initialColor.style.backgroundColor = '#0ff04a';
+    //     } else {
+    //         initialColor.style.backgroundColor = 'initial';
+    //     }
+    // }
 
 
     const removeTask = (event) => {
@@ -41,9 +47,9 @@ function TaskItem({ task, getTasks }) {
     return(
         <>
             <tr>
-                <td>{task.task}</td>
+                <td >{task.task}</td>
                 {/* This will turn the information from DB object into usable string */}
-                <td>{taskStatus}</td>
+                <td>{JSON.stringify(task.complete)}</td>
                 <td>
                     <input type="checkbox" value="no" onChange={toggleStatus} />
                     <button onClick={removeTask}>Clear</button>
