@@ -2,6 +2,8 @@ import axios from 'axios';
 
 
 function TaskItem({ task, getTasks }) {
+    let taskStatus = JSON.stringify(task.complete);
+
 
     const removeTask = (event) => {
         console.log(`in removeTask ${task.id}`);
@@ -12,21 +14,24 @@ function TaskItem({ task, getTasks }) {
             alert(`Sorry, dawg. Can't DELETE me!`);
         })
     };
-
+    
+    //TODO if statement
     const toggleStatus = () => {
-        axios.put( '/todo' ).then((response) => {
-            getTasks();
-        }).catch((error) => {
-            console.log(`Error in toggleStatus() ${error}`);
-            alert(`Sorry, dawg. You won't PUT me in my place!`);
-        })
-    }
+        let taskStatusDisplay = document.querySelector('.taskStatus');
+        // if (task.complete != true) {
+        //     taskStatusDisplay.innerHTML = `
+        //     ${taskStatus}
+        // }
+        taskStatusDisplay.innerHTML = `
+            <>${taskStatus}</>
+            `;
+    };
 
     return(
         <>
             <tr>
                 <td>{task.task}</td>
-                <td>{task.complete}</td>
+                <td>{taskStatus}</td>
                 <td>
                     <input type="checkbox" value="no" onChange={toggleStatus} />
                     <button onClick={removeTask}>Clear</button>

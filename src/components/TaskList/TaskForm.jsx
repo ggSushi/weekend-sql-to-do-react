@@ -3,15 +3,15 @@ import axios from 'axios';
 
 function TaskForm({ getTasks }) {
     let [newTask, setNewTask] = useState('');
-    let [status, setNewStatus] = useState('no')
+    // Below line isn't technically needed, so long as the object key exists in the Database
+    // let [status, setNewStatus] = useState(false)
 
-    const addTask = () => {
+    const addTask = (event) => {
+        event.preventDefault();
         axios.post('/todo', {
             task: newTask,
-            complete: status
         }).then ((response) => {
             setNewTask('');
-            setNewStatus('no');
 
             getTasks();
         }).catch((error) => {
@@ -25,7 +25,7 @@ function TaskForm({ getTasks }) {
         <div>
             <h3>New Task</h3>
             <form onSubmit={addTask}>
-                <input type="text" placeholder="Add new task" onChange={(e) => setNewTask(e.target.value)}/>
+                <input type="text" placeholder="Add new task" onChange={(event) => setNewTask(event.target.value)}/>
                 <button >Submit</button>
             </form>
         </div>

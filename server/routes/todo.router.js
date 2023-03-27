@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 // GET
 router.get('/', (req, res) => {
-    let queryText = `Select * from tasks;`;
+    let queryText = `Select * from tasks order by "id" desc;`;
     pool.query(queryText).then((result) => {
         console.log(`GET request made to /todo`);
         console.log(result.rows)
@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 // POST
 router.post('/', (req,res) => {
     const task = req.body;
-    let queryText = `Insert into tasks ("task", "complete")
-                     Values ($1, $2);`;
-    pool.query(queryText, [task.task, task.complete]).then ((result) =>{
+    let queryText = `Insert into tasks ("task")
+                     Values ($1);`;
+    pool.query(queryText, [task.task]).then ((result) =>{
         console.log(`Added to tasks list`);
         res.sendStatus(200);
     }).catch((error) => {
@@ -33,8 +33,12 @@ router.post('/', (req,res) => {
 router.put('/:id', (req,res) => {
     console.log( `In PUT request /todo`);
     let taskId = req.params.id;
+    //!
+    let completeStatus = req.body.complete;
+    console.log(req.params.id);
+    console.log(req.body);
     let queryText = `Update tasks set "complete" = $1 where "id" = $2;`;
-    pool.query(queryText, ['yes', taskId]).then((result) => {
+    pool.query(queryText, [completeStatus, taskId]).then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in PUT ${error}`);
