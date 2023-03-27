@@ -7,7 +7,6 @@ function TaskForm({ getTasks }) {
     // let [status, setNewStatus] = useState(false)
 
     const addTask = (event) => {
-        event.preventDefault();
         axios.post('/todo', {
             task: newTask,
         }).then ((response) => {
