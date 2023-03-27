@@ -9,8 +9,8 @@ function TaskList({ taskList, getTasks }) {
                 <thead>
                     <tr>
                         <th>Task To Do</th>
-                        <th>Completed?</th>
-                        <th></th>
+                        <th>Status</th>
+                        <th>Done?</th>
                     </tr>
                 </thead>
                 <tbody>
