@@ -35,6 +35,15 @@ function TaskItem({ task, getTasks, taskList }) {
             event.target.parentElement.parentElement.style.backgroundColor = 'initial';
         }
 
+        //! Possible solution. Still need to fix
+            // const getDecoration = () => {
+            // if( creature.name === 'a' ) {
+            //         return 'line-through';
+            //     } else {
+            //         return 'none';
+            // }
+            // }
+
         console.log('sanity check', task);
         axios.put(`/todo/${task.id}`, updateTask ).then((response) => {
             getTasks();
