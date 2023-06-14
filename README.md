@@ -1,9 +1,22 @@
-# Project Name
+# **To Do App**
+---
+### **_SQL To-Do App_**
+This app aims to help the user create their own to-do list, allowing them to create new tasks, check them off if they are completed, and delete them individually if no longer needed.
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+---
+### **_Setup_**
+Please include a `database.sql` text file in your repo that includes all of your `CREATE TABLE` queries. This is so we can re-create your database while testing your app.
 
-## Description
+You will need to run
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+```
+npm install
+npm run server
+npm run client
+```
+---
+### **_Technologies Used:_**
+- JavaScript, HTML, CSS
+- React
+- Axios
+- PostgreSQL
